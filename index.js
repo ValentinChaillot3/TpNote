@@ -126,9 +126,17 @@ if (!user) {
 
 })*/
 
-app.get('/login', passport.authenticate('jwt',{session: false}),(req,res,next)=>{
-    res.json({jwt: token})
+app.get('/login', function (req, res) {
+    const fetchUser1 = axios.get('https://tpnote-d015.restdb.io/rest/login',  {headers:
+            { 'x-apikey': '70f9440ef523be720647499c94730c2d429f8'
+            }})
+        .then(result => res.json(result.data))
 })
+
+
+/*app.get('/login', passport.authenticate('jwt',{session: false}),(req,res,next)=>{
+    res.json({jwt: token})
+})*/
 
 app.listen(PORT, function () {
   console.log('Example app listening on port ' + PORT)
