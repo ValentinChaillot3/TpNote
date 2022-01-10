@@ -1,0 +1,22 @@
+{
+  "name": "tpnote",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ValentinChaillot3/TpNote.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ValentinChaillot3/TpNote/issues"
+  },
+  "homepage": "https://github.com/ValentinChaillot3/TpNote#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
