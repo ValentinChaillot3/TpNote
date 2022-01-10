@@ -7,7 +7,7 @@ app.get('/recettes', function (req, res) {
   const fetchUser1 = axios.get('https://tpnote-d015.restdb.io/rest/recettes',  {headers:
      { 'x-apikey': '70f9440ef523be720647499c94730c2d429f8'
      }})
-  .then(result => res.send(result.data))
+  .then(result => res.json(result.data))
 })
 
 app.get('/recettes/:id', function (req, res) {
