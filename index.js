@@ -57,7 +57,16 @@ app.put('/recettes/:id', function (req, res) {
 
 
 //Route qui crée un compte
-
+app.post('/utilisateurs', function (req, res) {
+  const obj = {
+    login: "test",
+    password: "test"
+  }
+  const fetchUser1 = axios.post('https://tpnote-d015.restdb.io/rest/utilisateurs',obj,{headers:
+     { 'x-apikey': '70f9440ef523be720647499c94730c2d429f8'
+   }})
+  .then(result => res.json(result.data))
+})
 
 //Route qui permet de se connecter
 
