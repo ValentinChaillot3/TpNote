@@ -5,6 +5,43 @@ const axios = require('axios')
 const jwt = require('jsonwebtoken')
 const passport = require('passport')
 const passportjwt = require('passport-jwt')
+const secret = 'shhhhh'
+
+
+const JwtStrategy = passportjwt.Strategy
+const ExtractJwt = passportjwt.ExtractJwt
+
+const jwtOptions = {
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  secretOrKey: secret
+}
+
+function getUsers() {
+  const fetchUser1 = axios.get('https://tpnote-d015.restdb.io/rest/utilisateurs',  {headers:
+       { 'x-apikey': '70f9440ef523be720647499c94730c2d429f8'
+       }})
+       return fetchUser1.login
+}
+
+
+const users = getUsers()
+
+
+passport.use(
+  new JwtStrategy(jwtOptions, function(payload, next) {
+    const user = users.find(user => user.login === payload.login)
+
+    if (user) {
+      next(null, user)
+    } else {
+      next(null, false)
+    }
+  })
+)
+
+app.use(passport.initialize())
+
+app.use(express.json())
 
 //Route qui récupère la liste des recettes
 app.get('/recettes', function (req, res) {
@@ -69,6 +106,25 @@ app.post('/utilisateurs', function (req, res) {
 })
 
 //Route qui permet de se connecter
+app.post('/login', function(req, res) {
+  const login = req.body.login
+  const password = req.body.password
+  console.log(login,password)
+
+const user = users.find((user) =>{
+  return user.login === login && user.password === password
+})
+
+
+if (!user) {
+  res.json({error: 'error'})
+  return
+}
+
+  const token = jwt.sign({login: login}, secret)
+  res.json({jwt: token})
+
+})
 
 
 app.listen(PORT, function () {
