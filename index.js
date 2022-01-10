@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken')
 const passport = require('passport')
 const passportjwt = require('passport-jwt')
 const secret = 'shhhhh'
+var cors = require('cors')
 
 
 const JwtStrategy = passportjwt.Strategy
@@ -60,7 +61,7 @@ app.get('/recettes/:id', function (req, res) {
 })
 
 //Route qui ajoute une recettes
-app.post('/recettes', function (req, res) {
+app.post('/recettes',  passport.authenticate('jwt', { session: false }),  function (req, res) {
   const obj = {
     nom: "test",
     ingredients: "test"
@@ -72,7 +73,7 @@ app.post('/recettes', function (req, res) {
 })
 
 //Route qui supprime une recettes
-app.delete('/recettes/:id', function (req, res) {
+app.delete('/recettes/:id',  passport.authenticate('jwt', { session: false }),  function (req, res) {
     const fetchUser1 = axios.delete('https://tpnote-d015.restdb.io/rest/recettes/'+ req.params.id,  {headers:
             { 'x-apikey': '70f9440ef523be720647499c94730c2d429f8'
             }})
@@ -80,7 +81,7 @@ app.delete('/recettes/:id', function (req, res) {
 })
 
 //Route qui modifie une recettes
-app.put('/recettes/:id', function (req, res) {
+app.put('/recettes/:id',  passport.authenticate('jwt', { session: false }),  function (req, res) {
     const obj = {
         nom: "test6",
         ingredients: "test"
