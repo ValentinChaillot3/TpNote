@@ -39,6 +39,26 @@ app.delete('/recettes/:id', function (req, res) {
         .then(result => res.json(result.data))
 })
 
+//Route qui modifie une recettes
+app.put('/recettes/:id', function (req, res) {
+    const obj = {
+        nom: "test6",
+        ingredients: "test"
+    }
+    const fetchUser1 = axios.put('https://tpnote-d015.restdb.io/rest/recettes/' + req.params.id,obj,{headers:
+            {
+                'x-apikey': '70f9440ef523be720647499c94730c2d429f8'
+            }})
+        .then(result => res.json(result.data))
+})
+
+
+//Route qui crée un compte
+
+
+//Route qui permet de se connecté
+
+
 app.listen(PORT, function () {
   console.log('Example app listening on port ' + PORT)
 })
