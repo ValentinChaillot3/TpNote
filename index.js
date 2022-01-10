@@ -17,6 +17,8 @@ const jwtOptions = {
   secretOrKey: secret
 }
 
+app.use(cors())
+
 function getUsers() {
   const fetchUser1 = axios.get('https://tpnote-d015.restdb.io/rest/utilisateurs',  {headers:
        { 'x-apikey': '70f9440ef523be720647499c94730c2d429f8'
