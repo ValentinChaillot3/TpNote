@@ -106,7 +106,7 @@ app.post('/utilisateurs', function (req, res) {
 })
 
 //Route qui permet de se connecter
-app.post('/login', function(req, res) {
+/*app.post('/login', function(req, res) {
   const login = req.body.login
   const password = req.body.password
   console.log(login,password)
@@ -124,8 +124,11 @@ if (!user) {
   const token = jwt.sign({login: login}, secret)
   res.json({jwt: token})
 
-})
+})*/
 
+app.get('/login', passport.authenticate('jwt',{session: false}),(req,res,next)=>{
+    res.json({jwt: token})
+})
 
 app.listen(PORT, function () {
   console.log('Example app listening on port ' + PORT)
