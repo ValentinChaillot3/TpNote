@@ -1,7 +1,10 @@
 const express = require('express')
 const app = express()
 const PORT = process.env.PORT || 5000 // this is very important
-const axios = require('axios');
+const axios = require('axios')
+const jwt = require('jsonwebtoken')
+const passport = require('passport')
+const passportjwt = require('passport-jwt')
 
 //Route qui récupère la liste des recettes
 app.get('/recettes', function (req, res) {
@@ -56,7 +59,7 @@ app.put('/recettes/:id', function (req, res) {
 //Route qui crée un compte
 
 
-//Route qui permet de se connecté
+//Route qui permet de se connecter
 
 
 app.listen(PORT, function () {
