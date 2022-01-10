@@ -26,10 +26,6 @@ function getUsers() {
        return fetchUser1.login
 }
 
-
-const users = getUsers()
-
-
 passport.use(
   new JwtStrategy(jwtOptions, function(payload, next) {
     const user = users.find(user => user.login === payload.login)
