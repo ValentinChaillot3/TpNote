@@ -44,10 +44,16 @@ app.use(express.json())
 
 //Route qui récupère la liste des recettes
 app.get('/recettes', function (req, res) {
+  res.header('Access-Control-Allow-Origin', 'https://upbui.csb.app')
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+  res.header('Access-Control-Allow-Headers', 'Content-Type')
   const fetchUser1 = axios.get('https://tpnote-d015.restdb.io/rest/recettes',  {headers:
      { 'x-apikey': '70f9440ef523be720647499c94730c2d429f8'
      }})
-  .then(result => res.json(result.data))
+
+  .then(result => res.json({ recettes:
+    result.data
+  }))
 })
 
 //Route qui recupère une recettes
