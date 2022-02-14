@@ -51,21 +51,25 @@ app.get('/recettes', function (req, res) {
      { 'x-apikey': '70f9440ef523be720647499c94730c2d429f8'
      }})
 
-  .then(result => res.json({ recettes:
-    result.data
-  }))
+  .then(result => res.json({ recettes: result.data}))
 })
 
 //Route qui recupère une recettes
 app.get('/recettes/:id', function (req, res) {
+  res.header('Access-Control-Allow-Origin', 'https://upbui.csb.app')
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+  res.header('Access-Control-Allow-Headers', 'Content-Type')
   const fetchUser1 = axios.get('https://tpnote-d015.restdb.io/rest/recettes/'+ req.params.id,  {headers:
      { 'x-apikey': '70f9440ef523be720647499c94730c2d429f8'
      }})
-  .then(result => res.json(result.data))
+  .then(result => res.json({ recette: result.data}))
 })
 
 //Route qui ajoute une recettes
 app.post('/recettes',  passport.authenticate('jwt', { session: false }),  function (req, res) {
+  res.header('Access-Control-Allow-Origin', 'https://upbui.csb.app')
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+  res.header('Access-Control-Allow-Headers', 'Content-Type')
   const obj = {
     nom: "test",
     ingredients: "test"
@@ -78,6 +82,9 @@ app.post('/recettes',  passport.authenticate('jwt', { session: false }),  functi
 
 //Route qui supprime une recettes
 app.delete('/recettes/:id',  passport.authenticate('jwt', { session: false }),  function (req, res) {
+  res.header('Access-Control-Allow-Origin', 'https://upbui.csb.app')
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+  res.header('Access-Control-Allow-Headers', 'Content-Type')
     const fetchUser1 = axios.delete('https://tpnote-d015.restdb.io/rest/recettes/'+ req.params.id,  {headers:
             { 'x-apikey': '70f9440ef523be720647499c94730c2d429f8'
             }})
@@ -86,6 +93,9 @@ app.delete('/recettes/:id',  passport.authenticate('jwt', { session: false }),  
 
 //Route qui modifie une recettes
 app.put('/recettes/:id',  passport.authenticate('jwt', { session: false }),  function (req, res) {
+  res.header('Access-Control-Allow-Origin', 'https://upbui.csb.app')
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+  res.header('Access-Control-Allow-Headers', 'Content-Type')
     const obj = {
         nom: "test6",
         ingredients: "test"
