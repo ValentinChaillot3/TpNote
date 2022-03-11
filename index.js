@@ -66,7 +66,8 @@ app.get('/recettes/:id', function (req, res) {
 })
 
 //Route qui ajoute une recettes
-app.post('/recettes',  passport.authenticate('jwt', { session: false }),  function (req, res) {
+//passport.authenticate('jwt', { session: false }),  
+app.post('/recettes',  function (req, res) {
   res.header('Access-Control-Allow-Origin', 'https://upbui.csb.app')
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
   res.header('Access-Control-Allow-Headers', 'Content-Type')
