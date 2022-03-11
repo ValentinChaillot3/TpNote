@@ -81,7 +81,8 @@ app.post('/recettes',  passport.authenticate('jwt', { session: false }),  functi
 })
 
 //Route qui supprime une recettes
-app.delete('/recettes/:id',  passport.authenticate('jwt', { session: false }),  function (req, res) {
+//  passport.authenticate('jwt', { session: false }),
+app.delete('/recettes/:id',  function (req, res) {
   res.header('Access-Control-Allow-Origin', 'https://upbui.csb.app')
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
   res.header('Access-Control-Allow-Headers', 'Content-Type')
