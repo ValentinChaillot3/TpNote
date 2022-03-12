@@ -5,6 +5,7 @@ const axios = require('axios')
 const jwt = require('jsonwebtoken')
 const passport = require('passport')
 const passportjwt = require('passport-jwt')
+const bodyParser = require('body-parser')
 const secret = 'shhhhh'
 var cors = require('cors')
 
