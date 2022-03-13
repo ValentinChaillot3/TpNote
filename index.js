@@ -79,6 +79,7 @@ app.post('/recettes',  function (req, res) {
     nom: nom,
     ingredients: ingredients
   }
+  console.log(obj)
   const fetchUser1 = axios.post('https://tpnote-d015.restdb.io/rest/recettes',obj,{headers:
      { 'x-apikey': '70f9440ef523be720647499c94730c2d429f8'
    }})
