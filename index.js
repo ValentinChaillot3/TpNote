@@ -72,11 +72,13 @@ app.post('/recettes',  function (req, res) {
   res.header('Access-Control-Allow-Origin', 'https://upbui.csb.app')
   res.header('Access-Control-Allow-Methods', 'POST')
   res.header('Access-Control-Allow-Headers', 'Content-Type')
-  const obj = {     
+  /*const obj = {     
     nom: req.body.nom,
     ingredients: req.body.ingredients
-  }
-  const fetchUser1 = axios.post('https://tpnote-d015.restdb.io/rest/recettes',obj,{headers:
+  }*/
+  const nom = req.body.nom
+  const ingredients = req.body.ingredients
+  const fetchUser1 = axios.post('https://tpnote-d015.restdb.io/rest/recettes',nom,ingredients,{headers:
      { 'x-apikey': '70f9440ef523be720647499c94730c2d429f8'
    }})
   .then(result => res.json(result.data))
