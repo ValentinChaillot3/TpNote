@@ -18,8 +18,16 @@ const jwtOptions = {
   secretOrKey: secret
 }
 
-app.use(cors())
+app.use(cors({
+  origin: '*'
+}));
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+/*app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
+*/
+app.use(bodyParser.raw());
 function getUsers() {
   const fetchUser1 = axios.get('https://tpnote-d015.restdb.io/rest/utilisateurs',  {headers:
        { 'x-apikey': '70f9440ef523be720647499c94730c2d429f8'
@@ -68,7 +76,7 @@ app.get('/recettes/:id', function (req, res) {
 
 //Route qui ajoute une recettes
 //passport.authenticate('jwt', { session: false }),  
-app.post('/recettes',  function (req, res) {
+app.post('/recettes', urlencodedParser,function (req, res) {
   res.header('Access-Control-Allow-Origin', 'https://upbui.csb.app')
   res.header('Access-Control-Allow-Methods', 'POST')
   res.header('Access-Control-Allow-Headers', 'Content-Type')
