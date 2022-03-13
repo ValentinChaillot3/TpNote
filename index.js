@@ -19,7 +19,8 @@ const jwtOptions = {
 }
 
 
-app.use(bodyParser.urlencoded()); 
+//app.use(bodyParser.urlencoded()); 
+app.use(bodyParser.text("text/html"))
 app.use(cors({
   origin: '*'
 }));
@@ -108,10 +109,12 @@ app.put('/recettes/:id',  passport.authenticate('jwt', { session: false }),  fun
   res.header('Access-Control-Allow-Origin', 'https://upbui.csb.app')
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
   res.header('Access-Control-Allow-Headers', 'Content-Type')
-    const obj = {
-        nom: "test6",
-        ingredients: "test"
-    }
+  const nom = req.body.nom
+  const ingredients = req.body.ingredients
+  const obj = {     
+    nom: nom,
+    ingredients: ingredients
+  }
     const fetchUser1 = axios.put('https://tpnote-d015.restdb.io/rest/recettes/' + req.params.id,obj,{headers:
             {
                 'x-apikey': '70f9440ef523be720647499c94730c2d429f8'
@@ -122,9 +125,11 @@ app.put('/recettes/:id',  passport.authenticate('jwt', { session: false }),  fun
 
 //Route qui crée un compte
 app.post('/utilisateurs', function (req, res) {
+  const login = req.body.login
+  const password = req.body.password
   const obj = {
-    login: "test",
-    password: "test"
+    login: login,
+    password: password
   }
   const fetchUser1 = axios.post('https://tpnote-d015.restdb.io/rest/utilisateurs',obj,{headers:
      { 'x-apikey': '70f9440ef523be720647499c94730c2d429f8'
