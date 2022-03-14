@@ -28,7 +28,7 @@ npm start
 
 
   - API
- <br>
+
 La route login n'est pas terminé
   
   - VUE
