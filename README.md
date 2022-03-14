@@ -26,7 +26,7 @@ npm start
 ```
 ## Features manquante
 
-<p align="center">
+
   - API
 La route login n'est pas terminé
   
