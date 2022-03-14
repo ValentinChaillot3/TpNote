@@ -19,7 +19,7 @@ const jwtOptions = {
 }
 
 
-//app.use(bodyParser.urlencoded()); 
+app.use(bodyParser.urlencoded()); 
 app.use(bodyParser.text("text/html"))
 app.use(cors({
   origin: '*'
@@ -139,8 +139,6 @@ app.post('/utilisateurs', function (req, res) {
 })
 
 //Route qui permet de se connecter
-
-
 app.post('/login', async function(req, res) {
   const response  = await axios.get('https://tpnote-d015.restdb.io/rest/utilisateurs',{headers:
      { 'x-apikey': '70f9440ef523be720647499c94730c2d429f8'
