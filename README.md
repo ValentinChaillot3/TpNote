@@ -33,6 +33,7 @@ La route login n'est pas terminé
   -VUE
   
 Le bouton ajoute ne prends pas en compte le contenue du body et crée des recettes vide
+</br>  
 Le bouton modifier et l'inscription ne sont pas implémenté pour les même raisons que ci-dessus
 Impossible de mettre le pojet sur Netlify
   
