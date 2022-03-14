@@ -28,9 +28,10 @@ npm start
 
 
   - API
+ <br></br>
 La route login n'est pas terminé
   
-  -VUE
+  - VUE
   
 Le bouton ajoute ne prends pas en compte le contenue du body et crée des recettes vide
 </br>  
