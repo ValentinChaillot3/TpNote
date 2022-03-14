@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <a href="https://62dloi.csb.app/#/login" target="_blank">
+  <a href="https://upbui.csb.app/#/login" target="_blank">
     <br>
     Lien de l'application
   </a>
